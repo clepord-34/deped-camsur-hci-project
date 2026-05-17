@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="shield" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1B3A5C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2A5A8C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Shield background -->
+  <path d="M100 10 L185 50 L185 110 C185 155 145 185 100 195 C55 185 15 155 15 110 L15 50 Z" fill="url(#shield)" />
+  <!-- Inner shield border -->
+  <path d="M100 18 L178 54 L178 110 C178 150 142 178 100 188 C58 178 22 150 22 110 L22 54 Z" fill="none" stroke="#D4A017" stroke-width="2.5" />
+  <!-- Book icon -->
+  <g transform="translate(60, 55)">
+    <rect x="0" y="15" width="35" height="60" rx="3" fill="#FFFFFF" opacity="0.9"/>
+    <rect x="45" y="15" width="35" height="60" rx="3" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M40 15 Q40 5 30 5 L5 10 L5 75 L35 70 Z" fill="#F1C40F" opacity="0.85"/>
+    <path d="M40 15 Q40 5 50 5 L75 10 L75 75 L45 70 Z" fill="#C0392B" opacity="0.85"/>
+    <!-- Spine -->
+    <rect x="37" y="5" width="6" height="72" rx="3" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+  <!-- Text: DepEd -->
+  <text x="100" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">DepEd</text>
+  <text x="100" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#D4A017">CAMARINES SUR</text>
+  <!-- Stars decoration -->
+  <circle cx="55" cy="42" r="3" fill="#F1C40F"/>
+  <circle cx="100" cy="28" r="3.5" fill="#F1C40F"/>
+  <circle cx="145" cy="42" r="3" fill="#F1C40F"/>
+</svg>

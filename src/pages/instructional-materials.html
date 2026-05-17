@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructional Materials — All Learning Areas | DepEd Camarines Sur</title>
+    <meta name="description"
+        content="Browse and download instructional materials for all learning areas across all grade levels from DepEd Division of Camarines Sur." />
+    <link rel="icon" type="image/svg+xml" href="/deped-logo.png" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+
+<body>
+
+    {{> header}}
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header__breadcrumb">
+                <a href="/">Home</a> <span>/</span> <span>Instructional Materials</span>
+            </div>
+            <h1 class="page-header__title">📖 Instructional Materials — All Learning Areas</h1>
+        </div>
+    </section>
+
+    <!-- ===== SEARCH BAR ===== -->
+    <section class="im-search">
+        <div class="container">
+            <div class="im-search__bar">
+                <input type="text" placeholder="Search by subject, grade level, or title..." />
+                <button aria-label="Search">🔍</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FILTER BAR ===== -->
+    <div class="filter-bar">
+        <div class="container">
+            <button class="filter-btn filter-btn--active" data-filter="all">All Subjects</button>
+            <button class="filter-btn" data-filter="filipino">🇵🇭 Filipino</button>
+            <button class="filter-btn" data-filter="english">🔤 English</button>
+            <button class="filter-btn" data-filter="math">🔢 Mathematics</button>
+            <button class="filter-btn" data-filter="science">🔬 Science</button>
+            <button class="filter-btn" data-filter="ap">🌍 Araling Panlipunan</button>
+            <button class="filter-btn" data-filter="mapeh">🎨 MAPEH</button>
+            <button class="filter-btn" data-filter="tle">🔧 TLE</button>
+            <button class="filter-btn" data-filter="values">💎 Values Ed</button>
+        </div>
+    </div>
+
+    <!-- ===== LEARNING AREA CARDS ===== -->
+    <section class="learning-areas">
+        <div class="container">
+            <div class="learning-areas__grid">
+
+                <div class="la-card animate-on-scroll" data-type="filipino">
+                    <div class="la-card__icon">🇵🇭</div>
+                    <h3 class="la-card__title">Filipino</h3>
+                    <p class="la-card__count">48 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 1</span>
+                        <span class="la-card__grade">Grade 2</span>
+                        <span class="la-card__grade">Grade 3</span>
+                        <span class="la-card__grade">Grade 4</span>
+                        <span class="la-card__grade">Grade 5</span>
+                        <span class="la-card__grade">Grade 6</span>
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll delay-1" data-type="english">
+                    <div class="la-card__icon">🔤</div>
+                    <h3 class="la-card__title">English</h3>
+                    <p class="la-card__count">52 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 1</span>
+                        <span class="la-card__grade">Grade 2</span>
+                        <span class="la-card__grade">Grade 3</span>
+                        <span class="la-card__grade">Grade 4</span>
+                        <span class="la-card__grade">Grade 5</span>
+                        <span class="la-card__grade">Grade 6</span>
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll delay-2" data-type="math">
+                    <div class="la-card__icon">🔢</div>
+                    <h3 class="la-card__title">Mathematics</h3>
+                    <p class="la-card__count">55 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 1</span>
+                        <span class="la-card__grade">Grade 2</span>
+                        <span class="la-card__grade">Grade 3</span>
+                        <span class="la-card__grade">Grade 4</span>
+                        <span class="la-card__grade">Grade 5</span>
+                        <span class="la-card__grade">Grade 6</span>
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll" data-type="science">
+                    <div class="la-card__icon">🔬</div>
+                    <h3 class="la-card__title">Science</h3>
+                    <p class="la-card__count">42 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 3</span>
+                        <span class="la-card__grade">Grade 4</span>
+                        <span class="la-card__grade">Grade 5</span>
+                        <span class="la-card__grade">Grade 6</span>
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll delay-1" data-type="ap">
+                    <div class="la-card__icon">🌍</div>
+                    <h3 class="la-card__title">Araling Panlipunan</h3>
+                    <p class="la-card__count">38 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 1</span>
+                        <span class="la-card__grade">Grade 2</span>
+                        <span class="la-card__grade">Grade 3</span>
+                        <span class="la-card__grade">Grade 4</span>
+                        <span class="la-card__grade">Grade 5</span>
+                        <span class="la-card__grade">Grade 6</span>
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll delay-2" data-type="mapeh">
+                    <div class="la-card__icon">🎨</div>
+                    <h3 class="la-card__title">MAPEH</h3>
+                    <p class="la-card__count">35 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 1</span>
+                        <span class="la-card__grade">Grade 2</span>
+                        <span class="la-card__grade">Grade 3</span>
+                        <span class="la-card__grade">Grade 4</span>
+                        <span class="la-card__grade">Grade 5</span>
+                        <span class="la-card__grade">Grade 6</span>
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll" data-type="tle">
+                    <div class="la-card__icon">🔧</div>
+                    <h3 class="la-card__title">Technology & Livelihood Education</h3>
+                    <p class="la-card__count">28 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll delay-1" data-type="values">
+                    <div class="la-card__icon">💎</div>
+                    <h3 class="la-card__title">Edukasyon sa Pagpapakatao</h3>
+                    <p class="la-card__count">30 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 1</span>
+                        <span class="la-card__grade">Grade 2</span>
+                        <span class="la-card__grade">Grade 3</span>
+                        <span class="la-card__grade">Grade 4</span>
+                        <span class="la-card__grade">Grade 5</span>
+                        <span class="la-card__grade">Grade 6</span>
+                        <span class="la-card__grade">Grade 7</span>
+                        <span class="la-card__grade">Grade 8</span>
+                        <span class="la-card__grade">Grade 9</span>
+                        <span class="la-card__grade">Grade 10</span>
+                    </div>
+                </div>
+
+                <div class="la-card animate-on-scroll delay-2" data-type="english">
+                    <div class="la-card__icon">🖥️</div>
+                    <h3 class="la-card__title">Mother Tongue-Based</h3>
+                    <p class="la-card__count">18 resources available</p>
+                    <div class="la-card__grades">
+                        <span class="la-card__grade">Grade 1</span>
+                        <span class="la-card__grade">Grade 2</span>
+                        <span class="la-card__grade">Grade 3</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== SAMPLE RESOURCE TABLE ===== -->
+            <div class="section animate-on-scroll">
+                <div class="section__header" style="margin-bottom:var(--space-xl);">
+                    <h2 class="section__title" style="font-size:var(--fs-xl);">📋 Recently Added Resources</h2>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="resources-table">
+                        <thead>
+                            <tr>
+                                <th>Resource Title</th>
+                                <th>Subject</th>
+                                <th>Grade</th>
+                                <th>Type</th>
+                                <th>Date Uploaded</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="resource-name">Quarter 3 — Filipino 7 Module</td>
+                                <td>Filipino</td>
+                                <td>Grade 7</td>
+                                <td><span class="resource-type">Module</span></td>
+                                <td>Feb 24, 2026</td>
+                                <td><a href="#" class="btn btn--primary"
+                                        style="padding:0.4rem 0.8rem;font-size:0.75rem;">⬇ Download</a></td>
+                            </tr>
+                            <tr>
+                                <td class="resource-name">Science 10 — Lab Activity Worksheets</td>
+                                <td>Science</td>
+                                <td>Grade 10</td>
+                                <td><span class="resource-type">Worksheet</span></td>
+                                <td>Feb 22, 2026</td>
+                                <td><a href="#" class="btn btn--primary"
+                                        style="padding:0.4rem 0.8rem;font-size:0.75rem;">⬇ Download</a></td>
+                            </tr>
+                            <tr>
+                                <td class="resource-name">Math 4 — Multiplication Drill Activities</td>
+                                <td>Mathematics</td>
+                                <td>Grade 4</td>
+                                <td><span class="resource-type">Activity</span></td>
+                                <td>Feb 20, 2026</td>
+                                <td><a href="#" class="btn btn--primary"
+                                        style="padding:0.4rem 0.8rem;font-size:0.75rem;">⬇ Download</a></td>
+                            </tr>
+                            <tr>
+                                <td class="resource-name">AP 8 — Kasaysayan ng Asya Presentation</td>
+                                <td>Araling Panlipunan</td>
+                                <td>Grade 8</td>
+                                <td><span class="resource-type">Presentation</span></td>
+                                <td>Feb 18, 2026</td>
+                                <td><a href="#" class="btn btn--primary"
+                                        style="padding:0.4rem 0.8rem;font-size:0.75rem;">⬇ Download</a></td>
+                            </tr>
+                            <tr>
+                                <td class="resource-name">English 3 — Reading Comprehension Exercises</td>
+                                <td>English</td>
+                                <td>Grade 3</td>
+                                <td><span class="resource-type">Module</span></td>
+                                <td>Feb 15, 2026</td>
+                                <td><a href="#" class="btn btn--primary"
+                                        style="padding:0.4rem 0.8rem;font-size:0.75rem;">⬇ Download</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn--primary">View All Instructional Materials</button>
+            </div>
+        </div>
+    </section>
+
+    {{> footer}}
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

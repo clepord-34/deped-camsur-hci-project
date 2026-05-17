@@ -1,0 +1,103 @@
+  <!-- ===== TOP UTILITY BAR ===== -->
+  <div class="utility-bar">
+    <div class="container container--wide">
+      <div class="utility-bar__left">
+        <a href="https://www.gov.ph" target="_blank" rel="noopener">
+          🇵🇭 REPUBLIC OF THE PHILIPPINES
+        </a>
+      </div>
+      <div class="utility-bar__right">
+        <button class="contrast-toggle" id="contrastToggle" aria-label="Toggle High Contrast">
+          <span class="contrast-toggle__icon">◐</span>
+          <span>Accessibility</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN HEADER ===== -->
+  <header class="main-header" id="mainHeader">
+    <div class="container container--wide">
+      <a href="/" class="header__brand">
+        <img src="/deped-logo.png" alt="DepEd CamSur Logo" class="header__logo" />
+        <div class="header__text">
+          <span class="header__title">Department of Education</span>
+          <span class="header__divider">Division of Camarines Sur</span>
+        </div>
+      </a>
+
+      <nav class="mega-nav" aria-label="Main navigation">
+        <div class="mega-nav__item">
+          <button class="mega-nav__trigger">About <span class="chevron">▾</span></button>
+          <div class="mega-nav__dropdown">
+            <a href="/src/pages/about.html"><span class="icon">🏛️</span> About the Division</a>
+            <a href="#"><span class="icon">🎯</span> Vision, Mission & Values</a>
+            <a href="#"><span class="icon">👨‍💼</span> Officials & Staff</a>
+            <a href="#"><span class="icon">🏫</span> Organizational Structure</a>
+          </div>
+        </div>
+        <div class="mega-nav__item">
+          <button class="mega-nav__trigger">Issuances <span class="chevron">▾</span></button>
+          <div class="mega-nav__dropdown">
+            <a href="#"><span class="icon">📋</span> Division Memoranda</a>
+            <a href="#"><span class="icon">📢</span> Advisories</a>
+            <a href="#"><span class="icon">📜</span> DepEd Orders</a>
+            <a href="#"><span class="icon">📄</span> Unnumbered Memos</a>
+          </div>
+        </div>
+        <div class="mega-nav__item">
+          <button class="mega-nav__trigger">Services <span class="chevron">▾</span></button>
+          <div class="mega-nav__dropdown">
+            <a href="#"><span class="icon">📝</span> HR Services & Forms</a>
+            <a href="#"><span class="icon">💻</span> ICT Helpdesk</a>
+            <a href="/src/pages/services.html"><span class="icon">📊</span> E-Services Portal</a>
+            <a href="#"><span class="icon">🎓</span> Scholarship Programs</a>
+          </div>
+        </div>
+        <div class="mega-nav__item">
+          <button class="mega-nav__trigger">Transparency <span class="chevron">▾</span></button>
+          <div class="mega-nav__dropdown">
+            <a href="/src/pages/transparency-seal.html"><span class="icon">📑</span> Transparency Seal</a>
+            <a href="/src/pages/procurement.html"><span class="icon">💰</span> Procurement (BAC)</a>
+            <a href="#"><span class="icon">📈</span> Annual Reports</a>
+            <a href="#"><span class="icon">🏗️</span> Bidding Documents</a>
+          </div>
+        </div>
+        <div class="mega-nav__item">
+          <a href="/src/pages/archive.html" class="mega-nav__trigger">Media</a>
+        </div>
+        <div class="mega-nav__item">
+          <a href="/src/pages/instructional-materials.html" class="mega-nav__trigger">Learning Resources</a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <button class="search-btn" aria-label="Search" id="headerSearchBtn">🔍</button>
+        <a href="#contact" class="btn btn--primary">Contact Us</a>
+        <button class="mobile-burger" id="burgerBtn" aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MOBILE NAVIGATION ===== -->
+  <div class="mobile-nav__overlay" id="mobileOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav__close" id="mobileClose" aria-label="Close Menu">✕</button>
+    <div class="mobile-nav__links">
+      <a href="/src/pages/about.html">About the Division</a>
+      <a href="#">Vision, Mission & Values</a>
+      <a href="#">Division Memoranda</a>
+      <a href="#">Advisories</a>
+      <a href="#">HR Services & Forms</a>
+      <a href="#">ICT Helpdesk</a>
+      <a href="/src/pages/transparency-seal.html">Transparency Seal</a>
+      <a href="/src/pages/procurement.html">Procurement (BAC)</a>
+      <a href="/src/pages/archive.html">Archive: Pix & Videos</a>
+      <a href="/src/pages/instructional-materials.html">Instructional Materials</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </nav>
