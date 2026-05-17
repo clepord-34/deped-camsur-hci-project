@@ -4,41 +4,415 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About the Division — DepEd Camarines Sur</title>
-  <meta name="description" content="History, mandate, and overview of DepEd Camarines Sur." />
+  <title>About Us — DepEd Division of Camarines Sur</title>
+  <meta name="description"
+    content="Learn about the DepEd Division of Camarines Sur — our history, vision, mission, core values, key officials, and organizational structure." />
   <link rel="icon" type="image/svg+xml" href="/deped-logo.png" />
   <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="stylesheet" href="/src/styles/about.css" />
 </head>
 
 <body>
-
   {{> header}}
 
+  <!-- ===== ABOUT PAGE HERO ===== -->
+  <section class="about-hero">
+    <div class="about-hero__overlay"></div>
+    <div class="about-hero__content">
+      <p class="about-hero__label">Schools Division Office</p>
+      <h1 class="about-hero__title">About the Division</h1>
+      <p class="about-hero__subtitle">
+        Camarines Sur — building a future through quality, accessible, and inclusive education.
+      </p>
+    </div>
+  </section>
 
-  <!-- ===== PAGE HEADER ===== -->
-  <section class="page-header">
+  <!-- ===== STICKY IN-PAGE NAV ===== -->
+  <div class="about-subnav" id="aboutSubnav">
     <div class="container">
-      <div class="page-header__breadcrumb">
-        <a href="/">Home</a> / <span>About the Division</span>
-      </div>
-      <h1 class="page-header__title">About the Division</h1>
-      <p class="page-header__subtitle">History, mandate, and overview of DepEd Camarines Sur.</p>
+      <ul class="about-subnav__list" role="tablist">
+        <li>
+          <a href="#division" class="about-subnav__link about-subnav__link--active" data-section="division">
+            🏛️ The Division
+          </a>
+        </li>
+        <li>
+          <a href="#vmv" class="about-subnav__link" data-section="vmv">
+            🎯 Vision, Mission & Values
+          </a>
+        </li>
+        <li>
+          <a href="#officials" class="about-subnav__link" data-section="officials">
+            👨‍💼 Officials & Staff
+          </a>
+        </li>
+        <li>
+          <a href="#org-structure" class="about-subnav__link" data-section="org-structure">
+            🏫 Organizational Structure
+          </a>
+        </li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- ===== PLACEHOLDER CONTENT ===== -->
-  <section class="section">
-    <div class="container container--wide">
-      <div
-        style="padding: 100px 20px; text-align: center; border: 2px dashed #DEE2E8; border-radius: 12px; background: #FFF; margin-bottom: 40px;">
-        <h2 style="color: #1A1A2E; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Coming Soon</h2>
-        <p style="color: #5A6478;">The About the Division section is currently under development.</p>
+  <main class="about-main">
+
+    <!-- ===== SECTION 1: ABOUT THE DIVISION ===== -->
+    <section class="about-section" id="division">
+      <div class="container">
+        <div class="about-section__inner">
+          <div class="about-section__text animate-on-scroll">
+            <span class="about-section__eyebrow">Who We Are</span>
+            <h2 class="about-section__title">About the Division</h2>
+            <p>
+              The Department of Education – Schools Division of Camarines Sur (DepEd Camsur) is a government agency
+              under the Department of Education mandated to provide quality basic education to the learners across
+              all municipalities of the province.
+            </p>
+            <p>
+              Established to serve one of the largest divisions in the Bicol Region, DepEd Camsur oversees hundreds
+              of public elementary and secondary schools, employing thousands of teachers and non-teaching personnel
+              committed to the development of every Filipino learner.
+            </p>
+            <p>
+              The division continuously works to improve educational outcomes by implementing national programs,
+              promoting inclusive education, and fostering community partnerships to ensure no child is left behind.
+            </p>
+
+            <div class="about-stats">
+              <div class="about-stats__item">
+                <span class="about-stats__value">600+</span>
+                <span class="about-stats__label">Public Schools</span>
+              </div>
+              <div class="about-stats__item">
+                <span class="about-stats__value">14,000+</span>
+                <span class="about-stats__label">Teaching Personnel</span>
+              </div>
+              <div class="about-stats__item">
+                <span class="about-stats__value">350,000+</span>
+                <span class="about-stats__label">Enrolled Learners</span>
+              </div>
+              <div class="about-stats__item">
+                <span class="about-stats__value">35</span>
+                <span class="about-stats__label">Municipalities Served</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section__media animate-on-scroll delay-1">
+            <div class="about-emblem">
+              <img src="/deped-logo.png" alt="DepEd Camarines Sur Division Seal" />
+              <p class="about-emblem__caption">Schools Division Office<br />Camarines Sur</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ===== SECTION 2: VISION, MISSION & VALUES ===== -->
+    <section class="about-section about-section--alt" id="vmv">
+      <div class="container">
+        <div class="about-section__header animate-on-scroll">
+          <span class="about-section__eyebrow">Our Direction</span>
+          <h2 class="about-section__title">Vision, Mission & Values</h2>
+        </div>
+
+        <div class="vmv-grid">
+          <!-- Vision -->
+          <div class="vmv-card vmv-card--vision animate-on-scroll delay-1">
+            <div class="vmv-card__icon">🌟</div>
+            <h3 class="vmv-card__heading">Vision</h3>
+            <p class="vmv-card__body">
+              We dream of Filipinos who passionately love their country and whose values and competencies
+              enable them to realize their full potential and contribute meaningfully to building the nation.
+            </p>
+            <p class="vmv-card__body">
+              As a learner-centered public institution, the Department of Education continuously improves itself
+              to better serve its stakeholders.
+            </p>
+          </div>
+
+          <!-- Mission -->
+          <div class="vmv-card vmv-card--mission animate-on-scroll delay-2">
+            <div class="vmv-card__icon">🎯</div>
+            <h3 class="vmv-card__heading">Mission</h3>
+            <p class="vmv-card__body">
+              To protect and promote the right of every Filipino to quality, equitable, culture-based, and
+              complete basic education where:
+            </p>
+            <ul class="vmv-card__list">
+              <li>Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.</li>
+              <li>Teachers facilitate learning and constantly nurture every learner.</li>
+              <li>Administrators and staff, as stewards of the institution, ensure an enabling and supportive
+                environment.</li>
+              <li>Family, community, and other stakeholders are actively engaged and share responsibility for developing
+                life-long learners.</li>
+            </ul>
+          </div>
+
+          <!-- Values -->
+          <div class="vmv-card vmv-card--values animate-on-scroll delay-3">
+            <div class="vmv-card__icon">💎</div>
+            <h3 class="vmv-card__heading">Core Values</h3>
+            <div class="vmv-values-grid">
+              <div class="vmv-value">
+                <span class="vmv-value__icon">🇵🇭</span>
+                <span class="vmv-value__label">Maka-Diyos</span>
+                <span class="vmv-value__desc">Being spiritually and morally upright</span>
+              </div>
+              <div class="vmv-value">
+                <span class="vmv-value__icon">🤝</span>
+                <span class="vmv-value__label">Makatao</span>
+                <span class="vmv-value__desc">Regard for self and others</span>
+              </div>
+              <div class="vmv-value">
+                <span class="vmv-value__icon">🌍</span>
+                <span class="vmv-value__label">Makakalikasan</span>
+                <span class="vmv-value__desc">Care for the environment</span>
+              </div>
+              <div class="vmv-value">
+                <span class="vmv-value__icon">🏛️</span>
+                <span class="vmv-value__label">Makabansa</span>
+                <span class="vmv-value__desc">Love of country</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: OFFICIALS & STAFF ===== -->
+    <section class="about-section" id="officials">
+      <div class="container">
+        <div class="about-section__header animate-on-scroll">
+          <span class="about-section__eyebrow">Our Leaders</span>
+          <h2 class="about-section__title">Officials & Staff</h2>
+          <p class="about-section__desc">
+            Meet the key officials guiding the DepEd Division of Camarines Sur.
+          </p>
+        </div>
+
+        <!-- Top Official -->
+        <div class="officials-feature animate-on-scroll">
+          <div class="official-card official-card--featured">
+            <div class="official-card__avatar official-card__avatar--large">
+              <span>SDS</span>
+            </div>
+            <div class="official-card__info">
+              <h3 class="official-card__name">[Schools Division Superintendent]</h3>
+              <p class="official-card__title">Schools Division Superintendent</p>
+              <p class="official-card__office">Office of the Schools Division Superintendent</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ASDS Row -->
+        <h4 class="officials-group-label animate-on-scroll">Assistant Schools Division Superintendents</h4>
+        <div class="officials-grid officials-grid--asds">
+          <div class="official-card animate-on-scroll delay-1">
+            <div class="official-card__avatar"><span>ASDS</span></div>
+            <h3 class="official-card__name">[ASDS Name]</h3>
+            <p class="official-card__title">Asst. Schools Division Superintendent I</p>
+          </div>
+          <div class="official-card animate-on-scroll delay-2">
+            <div class="official-card__avatar"><span>ASDS</span></div>
+            <h3 class="official-card__name">[ASDS Name]</h3>
+            <p class="official-card__title">Asst. Schools Division Superintendent II</p>
+          </div>
+        </div>
+
+        <!-- Chiefs Row -->
+        <h4 class="officials-group-label animate-on-scroll">Division Chiefs & Section Heads</h4>
+        <div class="officials-grid animate-on-scroll">
+          <div class="official-card">
+            <div class="official-card__avatar official-card__avatar--sm"><span>CID</span></div>
+            <h3 class="official-card__name">[Chief Name]</h3>
+            <p class="official-card__title">Chief, Curriculum Implementation Division</p>
+          </div>
+          <div class="official-card">
+            <div class="official-card__avatar official-card__avatar--sm"><span>SGOD</span></div>
+            <h3 class="official-card__name">[Chief Name]</h3>
+            <p class="official-card__title">Chief, School Governance & Operations Division</p>
+          </div>
+          <div class="official-card">
+            <div class="official-card__avatar official-card__avatar--sm"><span>FMS</span></div>
+            <h3 class="official-card__name">[Chief Name]</h3>
+            <p class="official-card__title">Chief, Finance & Management Service</p>
+          </div>
+          <div class="official-card">
+            <div class="official-card__avatar official-card__avatar--sm"><span>HRS</span></div>
+            <h3 class="official-card__name">[Chief Name]</h3>
+            <p class="official-card__title">Chief, Human Resource Service</p>
+          </div>
+        </div>
+
+        <p class="officials-note animate-on-scroll">
+          📋 For the complete list of division personnel, please visit the
+          <a href="#">Division Directory</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: ORGANIZATIONAL STRUCTURE ===== -->
+    <section class="about-section about-section--alt" id="org-structure">
+      <div class="container">
+        <div class="about-section__header animate-on-scroll">
+          <span class="about-section__eyebrow">How We're Organized</span>
+          <h2 class="about-section__title">Organizational Structure</h2>
+          <p class="about-section__desc">
+            The Division is structured to ensure efficient delivery of educational services across all levels.
+          </p>
+        </div>
+
+        <div class="org-chart animate-on-scroll">
+          <!-- Level 1: SDS -->
+          <div class="org-level">
+            <div class="org-node org-node--top">
+              <div class="org-node__box">
+                <div class="org-node__icon">🏛️</div>
+                <strong>Office of the Schools Division Superintendent</strong>
+                <span>Schools Division Superintendent</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-connector org-connector--down"></div>
+
+          <!-- Level 2: ASDS -->
+          <div class="org-level">
+            <div class="org-node">
+              <div class="org-node__box org-node__box--asds">
+                <strong>Office of the ASDS</strong>
+                <span>Assistant Schools Division Superintendents</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-connector org-connector--branch"></div>
+
+          <!-- Level 3: Two main divisions -->
+          <div class="org-level org-level--split">
+            <div class="org-branch">
+              <div class="org-node__box org-node__box--division">
+                <strong>Curriculum Implementation Division (CID)</strong>
+                <ul>
+                  <li>Instructional Supervision</li>
+                  <li>Learning Resource Management</li>
+                  <li>Special Programs</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="org-branch">
+              <div class="org-node__box org-node__box--division">
+                <strong>School Governance &amp; Operations Division (SGOD)</strong>
+                <ul>
+                  <li>Education Facilities</li>
+                  <li>DRRM &amp; Health Services</li>
+                  <li>Social Mobilization</li>
+                  <li>Planning &amp; Research</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-connector org-connector--branch"></div>
+
+          <!-- Level 4: Support divisions -->
+          <div class="org-level org-level--support">
+            <div class="org-node__box org-node__box--support">
+              <strong>Finance &amp; Mgmt. Service</strong>
+              <span>Budget, Accounting, Procurement</span>
+            </div>
+            <div class="org-node__box org-node__box--support">
+              <strong>Human Resource Service</strong>
+              <span>Recruitment, Records, Welfare</span>
+            </div>
+            <div class="org-node__box org-node__box--support">
+              <strong>Legal &amp; Admin Service</strong>
+              <span>Legal, Administrative Support</span>
+            </div>
+          </div>
+
+          <div class="org-connector org-connector--down"></div>
+
+          <!-- Level 5: District offices -->
+          <div class="org-level">
+            <div class="org-node">
+              <div class="org-node__box org-node__box--district">
+                <div class="org-node__icon">🏫</div>
+                <strong>District Offices</strong>
+                <span>District Supervisors across all municipalities of Camarines Sur</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-connector org-connector--down"></div>
+
+          <!-- Level 6: Schools -->
+          <div class="org-level">
+            <div class="org-node">
+              <div class="org-node__box org-node__box--schools">
+                <div class="org-node__icon">📚</div>
+                <strong>Public Elementary &amp; Secondary Schools</strong>
+                <span>School Heads, Teachers, Learners</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="org-download animate-on-scroll">
+          <a href="#" class="btn btn--outline">
+            📥 Download Full Organizational Chart (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
   {{> footer}}
 
   <script type="module" src="/src/main.js"></script>
+  <script>
+    // ── Sticky subnav + active section highlighting ──
+    (function () {
+      const subnav = document.getElementById('aboutSubnav');
+      const links = document.querySelectorAll('.about-subnav__link');
+      const sections = ['division', 'vmv', 'officials', 'org-structure'].map(id =>
+        document.getElementById(id)
+      );
+
+      const setActive = id => {
+        links.forEach(l => {
+          l.classList.toggle('about-subnav__link--active', l.dataset.section === id);
+        });
+      };
+
+      const onScroll = () => {
+        const offset = subnav.offsetHeight + 80;
+        let current = sections[0].id;
+        sections.forEach(sec => {
+          if (sec && sec.getBoundingClientRect().top <= offset) current = sec.id;
+        });
+        setActive(current);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      links.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.getElementById(link.dataset.section);
+          if (target) {
+            const offset = subnav.offsetHeight + 16;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>

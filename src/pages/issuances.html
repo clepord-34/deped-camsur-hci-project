@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Issuances — DepEd Division of Camarines Sur</title>
+    <meta name="description"
+        content="Browse Division Memoranda, Advisories, DepEd Orders, and Unnumbered Memos from the DepEd Division of Camarines Sur." />
+    <link rel="icon" type="image/svg+xml" href="/deped-logo.png" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/styles/issuances.css" />
+</head>
+
+<body>
+    {{> header}}
+
+    <!-- ===== HERO ===== -->
+    <section class="iss-hero">
+        <div class="iss-hero__overlay"></div>
+        <div class="iss-hero__content">
+            <p class="iss-hero__label">Official Documents</p>
+            <h1 class="iss-hero__title">Issuances &amp; Advisories</h1>
+            <p class="iss-hero__subtitle">
+                Access Division Memoranda, Advisories, DepEd Orders, and Unnumbered Memos in one place.
+            </p>
+
+            <!-- Global Search -->
+            <div class="iss-hero__search">
+                <span class="iss-hero__search-icon">🔍</span>
+                <input type="text" id="globalIssSearch" class="iss-hero__search-input"
+                    placeholder="Search by title, memo number, or keyword…" aria-label="Search issuances" />
+                <button class="iss-hero__search-clear" id="clearSearch" aria-label="Clear search" hidden>✕</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STICKY SUBNAV ===== -->
+    <div class="iss-subnav" id="issSubnav">
+        <div class="container">
+            <ul class="iss-subnav__list">
+                <li>
+                    <a href="#division-memo" class="iss-subnav__link iss-subnav__link--active"
+                        data-section="division-memo">
+                        📋 Division Memoranda
+                        <span class="iss-subnav__count" id="count-division-memo"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#advisories" class="iss-subnav__link" data-section="advisories">
+                        📢 Advisories
+                        <span class="iss-subnav__count" id="count-advisories"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#deped-orders" class="iss-subnav__link" data-section="deped-orders">
+                        📜 DepEd Orders
+                        <span class="iss-subnav__count" id="count-deped-orders"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#unnumbered" class="iss-subnav__link" data-section="unnumbered">
+                        📄 Unnumbered Memos
+                        <span class="iss-subnav__count" id="count-unnumbered"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== MAIN ===== -->
+    <main class="iss-main">
+        <div class="container">
+
+            <!-- ── Toolbar (Year Filter + Sort) ── -->
+            <div class="iss-toolbar" id="issToolbar">
+                <div class="iss-toolbar__years" id="yearFilters" role="group" aria-label="Filter by year">
+                    <span class="iss-toolbar__label">Year:</span>
+                    <button class="iss-year-btn iss-year-btn--active" data-year="all">All</button>
+                    <button class="iss-year-btn" data-year="2026">2026</button>
+                    <button class="iss-year-btn" data-year="2025">2025</button>
+                    <button class="iss-year-btn" data-year="2024">2024</button>
+                    <button class="iss-year-btn" data-year="2023">2023</button>
+                </div>
+                <div class="iss-toolbar__right">
+                    <span class="iss-results-label" id="resultsLabel"></span>
+                    <select class="iss-sort" id="issSort" aria-label="Sort order">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ── No Results ── -->
+            <div class="iss-empty" id="issEmpty" hidden>
+                <span class="iss-empty__icon">📭</span>
+                <p class="iss-empty__msg">No issuances match your search.</p>
+                <button class="btn btn--outline" id="clearFilters">Clear Filters</button>
+            </div>
+
+            <!-- ===== SECTION 1: DIVISION MEMORANDA ===== -->
+            <section class="iss-section" id="division-memo">
+                <div class="iss-section__header">
+                    <div class="iss-section__title-group">
+                        <span class="iss-section__icon">📋</span>
+                        <div>
+                            <h2 class="iss-section__title">Division Memoranda</h2>
+                            <p class="iss-section__desc">Official numbered memoranda issued by the Schools Division
+                                Superintendent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="iss-table-wrap">
+                    <table class="iss-table" aria-label="Division Memoranda">
+                        <thead>
+                            <tr>
+                                <th class="iss-table__num">Memo No.</th>
+                                <th>Title / Subject</th>
+                                <th class="iss-table__date">Date Issued</th>
+                                <th class="iss-table__action">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-division-memo">
+                            <!-- JS-rendered rows from data below -->
+                        </tbody>
+                    </table>
+                    <div class="iss-section__empty" id="empty-division-memo" hidden>
+                        <span>No memoranda match the current filter.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== SECTION 2: ADVISORIES ===== -->
+            <section class="iss-section" id="advisories">
+                <div class="iss-section__header">
+                    <div class="iss-section__title-group">
+                        <span class="iss-section__icon">📢</span>
+                        <div>
+                            <h2 class="iss-section__title">Advisories</h2>
+                            <p class="iss-section__desc">Time-sensitive notices, class suspension announcements, and
+                                urgent communications.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="iss-cards" id="cards-advisories">
+                    <!-- JS-rendered cards -->
+                </div>
+                <div class="iss-section__empty" id="empty-advisories" hidden>
+                    <span>No advisories match the current filter.</span>
+                </div>
+            </section>
+
+            <!-- ===== SECTION 3: DEPED ORDERS ===== -->
+            <section class="iss-section" id="deped-orders">
+                <div class="iss-section__header">
+                    <div class="iss-section__title-group">
+                        <span class="iss-section__icon">📜</span>
+                        <div>
+                            <h2 class="iss-section__title">DepEd Orders</h2>
+                            <p class="iss-section__desc">National orders from the Department of Education Central Office
+                                relevant to this division.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="iss-table-wrap">
+                    <table class="iss-table" aria-label="DepEd Orders">
+                        <thead>
+                            <tr>
+                                <th class="iss-table__num">Order No.</th>
+                                <th>Title / Subject</th>
+                                <th class="iss-table__date">Date Issued</th>
+                                <th class="iss-table__action">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-deped-orders">
+                        </tbody>
+                    </table>
+                    <div class="iss-section__empty" id="empty-deped-orders" hidden>
+                        <span>No DepEd orders match the current filter.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== SECTION 4: UNNUMBERED MEMOS ===== -->
+            <section class="iss-section" id="unnumbered">
+                <div class="iss-section__header">
+                    <div class="iss-section__title-group">
+                        <span class="iss-section__icon">📄</span>
+                        <div>
+                            <h2 class="iss-section__title">Unnumbered Memos</h2>
+                            <p class="iss-section__desc">Supplemental communications and directives not assigned a
+                                formal number.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="iss-table-wrap">
+                    <table class="iss-table" aria-label="Unnumbered Memos">
+                        <thead>
+                            <tr>
+                                <th>Title / Subject</th>
+                                <th class="iss-table__date">Date Issued</th>
+                                <th class="iss-table__action">Download</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-unnumbered">
+                        </tbody>
+                    </table>
+                    <div class="iss-section__empty" id="empty-unnumbered" hidden>
+                        <span>No unnumbered memos match the current filter.</span>
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- /container -->
+    </main>
+
+    {{> footer}}
+
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        // ============================================================
+        //  ISSUANCES DATA
+        //  Replace / expand these arrays with your real data.
+        //  Each item: { id, number, title, date (YYYY-MM-DD), tag, file }
+        // ============================================================
+        const DATA = {
+            'division-memo': [
+                { number: 'DM No. 089, s. 2026', title: 'Conduct of Division Science Fair', date: '2026-02-24', file: '#' },
+                { number: 'DM No. 088, s. 2026', title: 'Submission of School Improvement Plans', date: '2026-02-22', file: '#' },
+                { number: 'DM No. 087, s. 2026', title: 'Guidelines on Teacher Induction Program', date: '2026-02-20', file: '#' },
+                { number: 'DM No. 086, s. 2026', title: '2nd Quarter Assessment Schedule', date: '2026-02-18', file: '#' },
+                { number: 'DM No. 085, s. 2026', title: 'Brigada Eskwela 2026 Implementation Guidelines', date: '2026-02-15', file: '#' },
+                { number: 'DM No. 072, s. 2025', title: 'Division Reading Program — Phase II Rollout', date: '2025-09-10', file: '#' },
+                { number: 'DM No. 068, s. 2025', title: 'Year-End Assessment and Reporting Procedures', date: '2025-08-28', file: '#' },
+                { number: 'DM No. 051, s. 2025', title: 'Conduct of Palarong Pambansa Division Eliminations', date: '2025-06-05', file: '#' },
+                { number: 'DM No. 033, s. 2025', title: 'Guidelines on Learner Promotion and Retention SY 2024–2025', date: '2025-03-14', file: '#' },
+                { number: 'DM No. 012, s. 2024', title: 'Distribution of Learning Materials — 1st Semester', date: '2024-07-18', file: '#' },
+                { number: 'DM No. 009, s. 2024', title: 'School-Based Feeding Program Implementation', date: '2024-06-20', file: '#' },
+                { number: 'DM No. 003, s. 2023', title: 'Guidelines on the Conduct of LAC Sessions', date: '2023-01-16', file: '#' },
+            ],
+
+            advisories: [
+                { tag: 'Advisory', title: 'Suspension of Classes — All Municipalities (Inclement Weather)', date: '2026-02-25', file: '#' },
+                { tag: 'Notice', title: 'Reminder: Submission of Monthly Accomplishment Reports', date: '2026-02-23', file: '#' },
+                { tag: 'Advisory', title: 'Division-Wide Earthquake Drill Schedule', date: '2026-02-21', file: '#' },
+                { tag: 'Notice', title: 'Invitation to Division Festival of Talents 2026', date: '2026-02-19', file: '#' },
+                { tag: 'Advisory', title: 'DepEd TV Schedule — Enhanced Learning Program', date: '2026-02-17', file: '#' },
+                { tag: 'Alert', title: 'Typhoon Preparedness: Preemptive Class Suspension', date: '2025-11-03', file: '#' },
+                { tag: 'Notice', title: 'Online Submission of IPCRF — Deadline Extension', date: '2025-05-20', file: '#' },
+                { tag: 'Advisory', title: 'Reminder: Anti-Red Tape Act Compliance for All Schools', date: '2024-09-09', file: '#' },
+                { tag: 'Notice', title: 'Health Protocol Updates for School Re-opening', date: '2023-08-04', file: '#' },
+            ],
+
+            'deped-orders': [
+                { number: 'DO No. 012, s. 2026', title: 'School Calendar and Activities for SY 2026–2027', date: '2026-01-30', file: '#' },
+                { number: 'DO No. 034, s. 2025', title: 'Policy Guidelines on the K to 12 Basic Education Program', date: '2025-10-11', file: '#' },
+                { number: 'DO No. 021, s. 2025', title: 'Implementing Guidelines on the Matatag Curriculum', date: '2025-07-22', file: '#' },
+                { number: 'DO No. 008, s. 2025', title: 'Omnibus Guidelines on the Assessment and Rating of Learning', date: '2025-02-14', file: '#' },
+                { number: 'DO No. 047, s. 2024', title: 'Guidelines on the Hiring of Teacher Applicants', date: '2024-11-05', file: '#' },
+                { number: 'DO No. 031, s. 2024', title: 'Adoption of the MATATAG Curriculum Framework', date: '2024-08-08', file: '#' },
+                { number: 'DO No. 005, s. 2023', title: 'School-Based Management Assessment Tool (SBM)', date: '2023-03-01', file: '#' },
+            ],
+
+            unnumbered: [
+                { title: 'Reminder on the Proper Disposal of School Waste', date: '2026-02-10', file: '#' },
+                { title: 'Guidelines on Digital Literacy Week Activities', date: '2026-01-28', file: '#' },
+                { title: 'Clarification on the Encoding of IPCRF Ratings', date: '2025-12-12', file: '#' },
+                { title: 'Supplemental Guidelines — School Sports Tournaments', date: '2025-10-05', file: '#' },
+                { title: 'Reminder on Compliance with COA Requirements', date: '2025-06-18', file: '#' },
+                { title: 'Guidelines on Conduct of School-Level World Teachers Day', date: '2024-10-01', file: '#' },
+                { title: 'Advisory on the Use of Mother Tongue in Classroom Instruction', date: '2023-09-15', file: '#' },
+            ],
+        };
+
+        // ============================================================
+        //  STATE
+        // ============================================================
+        let activeYear = 'all';
+        let activeQuery = '';
+        let activeSort = 'newest';
+
+        // ============================================================
+        //  HELPERS
+        // ============================================================
+        const getYear = d => d.date.slice(0, 4);
+        const fmtDate = d => {
+            const [y, m, day] = d.split('-');
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return `${months[+m - 1]} ${+day}, ${y}`;
+        };
+        const matches = (item, query) => {
+            const q = query.toLowerCase();
+            return (item.title || '').toLowerCase().includes(q)
+                || (item.number || '').toLowerCase().includes(q)
+                || (item.tag || '').toLowerCase().includes(q);
+        };
+        const sortItems = (arr) => {
+            return [...arr].sort((a, b) =>
+                activeSort === 'newest'
+                    ? b.date.localeCompare(a.date)
+                    : a.date.localeCompare(b.date)
+            );
+        };
+        const filterItems = (arr) => {
+            return sortItems(arr).filter(item => {
+                const yearOk = activeYear === 'all' || getYear(item) === activeYear;
+                const queryOk = !activeQuery || matches(item, activeQuery);
+                return yearOk && queryOk;
+            });
+        };
+
+        // Tag color map
+        const TAG_CLASS = {
+            Advisory: 'tag--advisory',
+            Notice: 'tag--notice',
+            Alert: 'tag--alert',
+        };
+
+        // ============================================================
+        //  RENDERERS
+        // ============================================================
+        function renderTable(tbodyId, emptyId, sectionKey, hasNumber) {
+            const tbody = document.getElementById(tbodyId);
+            const emptyEl = document.getElementById(emptyId);
+            const items = filterItems(DATA[sectionKey]);
+
+            tbody.innerHTML = items.map(item => `
+        <tr class="iss-row">
+          ${hasNumber ? `<td class="iss-row__num">${item.number}</td>` : ''}
+          <td class="iss-row__title">${highlight(item.title, activeQuery)}</td>
+          <td class="iss-row__date">${fmtDate(item.date)}</td>
+          <td class="iss-row__action">
+            <a href="${item.file}" class="iss-dl-btn" aria-label="Download ${item.title}" ${item.file === '#' ? '' : 'download'}>
+              <span>⬇️</span> PDF
+            </a>
+          </td>
+        </tr>
+      `).join('');
+
+            emptyEl.hidden = items.length > 0;
+            return items.length;
+        }
+
+        function renderCards(containerId, emptyId) {
+            const container = document.getElementById(containerId);
+            const emptyEl = document.getElementById(emptyId);
+            const items = filterItems(DATA.advisories);
+
+            container.innerHTML = items.map(item => `
+        <div class="iss-advisory-card">
+          <span class="iss-tag ${TAG_CLASS[item.tag] || 'tag--advisory'}">${item.tag}</span>
+          <p class="iss-advisory-card__title">${highlight(item.title, activeQuery)}</p>
+          <div class="iss-advisory-card__footer">
+            <span class="iss-advisory-card__date">📅 ${fmtDate(item.date)}</span>
+            <a href="${item.file}" class="iss-dl-btn" aria-label="Download advisory">⬇️ PDF</a>
+          </div>
+        </div>
+      `).join('');
+
+            emptyEl.hidden = items.length > 0;
+            return items.length;
+        }
+
+        function highlight(text, query) {
+            if (!query) return text;
+            const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return text.replace(re, '<mark>$1</mark>');
+        }
+
+        // ============================================================
+        //  UPDATE ALL SECTIONS
+        // ============================================================
+        function updateCounts(counts) {
+            const ids = ['division-memo', 'advisories', 'deped-orders', 'unnumbered'];
+            const total = Object.values(counts).reduce((a, b) => a + b, 0);
+            ids.forEach(id => {
+                const el = document.getElementById('count-' + id);
+                const n = counts[id];
+                el.textContent = n > 0 ? n : '';
+                el.hidden = n === 0;
+            });
+            document.getElementById('resultsLabel').textContent =
+                activeQuery || activeYear !== 'all'
+                    ? `${total} result${total !== 1 ? 's' : ''} found`
+                    : '';
+            document.getElementById('issEmpty').hidden = total > 0;
+        }
+
+        function renderAll() {
+            const counts = {
+                'division-memo': renderTable('tbody-division-memo', 'empty-division-memo', 'division-memo', true),
+                'advisories': renderCards('cards-advisories', 'empty-advisories'),
+                'deped-orders': renderTable('tbody-deped-orders', 'empty-deped-orders', 'deped-orders', true),
+                'unnumbered': renderTable('tbody-unnumbered', 'empty-unnumbered', 'unnumbered', false),
+            };
+            updateCounts(counts);
+        }
+
+        // ============================================================
+        //  EVENTS
+        // ============================================================
+
+        // Search
+        const searchInput = document.getElementById('globalIssSearch');
+        const clearBtn = document.getElementById('clearSearch');
+
+        searchInput.addEventListener('input', () => {
+            activeQuery = searchInput.value.trim();
+            clearBtn.hidden = !activeQuery;
+            renderAll();
+        });
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            activeQuery = '';
+            clearBtn.hidden = true;
+            searchInput.focus();
+            renderAll();
+        });
+
+        // Year filter
+        document.getElementById('yearFilters').addEventListener('click', e => {
+            const btn = e.target.closest('.iss-year-btn');
+            if (!btn) return;
+            document.querySelectorAll('.iss-year-btn').forEach(b => b.classList.remove('iss-year-btn--active'));
+            btn.classList.add('iss-year-btn--active');
+            activeYear = btn.dataset.year;
+            renderAll();
+        });
+
+        // Sort
+        document.getElementById('issSort').addEventListener('change', e => {
+            activeSort = e.target.value;
+            renderAll();
+        });
+
+        // Clear all filters button (empty state)
+        document.getElementById('clearFilters').addEventListener('click', () => {
+            searchInput.value = '';
+            activeQuery = '';
+            activeYear = 'all';
+            activeSort = 'newest';
+            clearBtn.hidden = true;
+            document.querySelectorAll('.iss-year-btn').forEach(b =>
+                b.classList.toggle('iss-year-btn--active', b.dataset.year === 'all')
+            );
+            document.getElementById('issSort').value = 'newest';
+            renderAll();
+        });
+
+        // Sticky subnav scroll spy
+        (function () {
+            const subnav = document.getElementById('issSubnav');
+            const links = document.querySelectorAll('.iss-subnav__link');
+            const sections = ['division-memo', 'advisories', 'deped-orders', 'unnumbered']
+                .map(id => document.getElementById(id));
+
+            const setActive = id => links.forEach(l =>
+                l.classList.toggle('iss-subnav__link--active', l.dataset.section === id)
+            );
+
+            window.addEventListener('scroll', () => {
+                const offset = subnav.offsetHeight + 80;
+                let current = sections[0].id;
+                sections.forEach(sec => {
+                    if (sec && sec.getBoundingClientRect().top <= offset) current = sec.id;
+                });
+                setActive(current);
+            }, { passive: true });
+
+            links.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.getElementById(link.dataset.section);
+                    if (target) {
+                        const toolbar = document.getElementById('issToolbar');
+                        const offset = subnav.offsetHeight + toolbar.offsetHeight + 16;
+                        window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - offset, behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        renderAll();
+    </script>
+</body>
+
+</html>
