@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Services & Forms — DepEd Division of Camarines Sur</title>
+  <meta name="description" content="Access HR services, download official forms, and reach the Human Resource Management Division of DepEd Camarines Sur." />
+  <link rel="icon" type="image/svg+xml" href="/deped-logo.png" />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <style>
+    /* ---- HR Service Category Cards ---- */
+    .hr-cats { padding: var(--space-3xl) 0; background: var(--color-white); }
+    .hr-cats__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    .hr-cat {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    .hr-cat::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-navy), var(--color-navy-light));
+      transition: height var(--transition-base);
+    }
+    .hr-cat:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .hr-cat:hover::before { height: 6px; }
+    .hr-cat__icon {
+      width: 52px; height: 52px;
+      background: rgba(27,58,92,0.07);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--fs-xl);
+      margin-bottom: var(--space-md);
+    }
+    .hr-cat__title { font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--color-navy); margin-bottom: var(--space-xs); }
+    .hr-cat__desc { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-relaxed); margin-bottom: var(--space-md); }
+    .hr-cat__count { font-size: var(--fs-xs); font-weight: var(--fw-semibold); color: var(--color-navy-light); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ---- Forms Library ---- */
+    .forms-library { padding: var(--space-3xl) 0; background: var(--color-bg-alt); }
+    .forms-table-wrap { background: var(--color-white); border-radius: var(--radius-lg); border: 1px solid var(--color-border); overflow: hidden; }
+    .form-row[data-hidden="true"] { display: none; }
+
+    .form-badge {
+      display: inline-block;
+      font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+      padding: 2px 10px; border-radius: var(--radius-full);
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .form-badge--leave     { background: rgba(39,174,96,0.1);  color: var(--color-success); }
+    .form-badge--appt      { background: rgba(27,58,92,0.08);  color: var(--color-navy); }
+    .form-badge--reclass   { background: rgba(212,160,23,0.12); color: #946E0A; }
+    .form-badge--retire    { background: rgba(192,57,43,0.1);  color: var(--color-red); }
+    .form-badge--clearance { background: rgba(41,128,185,0.1); color: var(--color-info); }
+    .form-badge--general   { background: var(--color-bg-alt);  color: var(--color-text-secondary); }
+
+    /* Filter bar override (non-sticky here) */
+    .filter-bar--inline {
+      position: static;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      margin-bottom: var(--space-xl);
+    }
+
+    /* ---- HR Contact ---- */
+    .hr-contact { padding: var(--space-3xl) 0; background: var(--color-white); }
+    .hr-contact__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+    .hr-contact-card {
+      background: var(--color-bg-alt);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      text-align: center;
+    }
+    .hr-contact-card__icon { font-size: var(--fs-3xl); margin-bottom: var(--space-md); }
+    .hr-contact-card__title { font-size: var(--fs-base); font-weight: var(--fw-bold); color: var(--color-navy); margin-bottom: var(--space-xs); }
+    .hr-contact-card__detail { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-relaxed); }
+
+    @media (max-width: 1024px) {
+      .hr-cats__grid { grid-template-columns: repeat(2, 1fr); }
+      .hr-contact__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .hr-cats__grid { grid-template-columns: 1fr; }
+      .hr-contact__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  {{> header}}
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-header__title">📝 HR Services & Forms</h1>
+      <div class="page-header__breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Services</span>
+        <span>›</span>
+        <span>HR Services & Forms</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HR Service Categories -->
+  <section class="hr-cats">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title animate-on-scroll">Human Resource Services</h2>
+        <p class="section__subtitle animate-on-scroll delay-1">
+          Access employee records, process requests, and download official forms managed by the Human Resource Management Division.
+        </p>
+      </div>
+      <div class="hr-cats__grid">
+        <div class="hr-cat animate-on-scroll delay-1">
+          <div class="hr-cat__icon">📋</div>
+          <div class="hr-cat__title">Leave & Attendance</div>
+          <div class="hr-cat__desc">File leave applications, verify leave balances, and access attendance records and DTR forms.</div>
+          <div class="hr-cat__count">6 forms available</div>
+        </div>
+        <div class="hr-cat animate-on-scroll delay-2">
+          <div class="hr-cat__icon">📌</div>
+          <div class="hr-cat__title">Appointments & Promotions</div>
+          <div class="hr-cat__desc">Documents required for teacher appointments, item changes, and promotion endorsements.</div>
+          <div class="hr-cat__count">5 forms available</div>
+        </div>
+        <div class="hr-cat animate-on-scroll delay-3">
+          <div class="hr-cat__icon">🔄</div>
+          <div class="hr-cat__title">Reclassification</div>
+          <div class="hr-cat__desc">Forms and guidelines for teacher reclassification and salary grade step adjustments.</div>
+          <div class="hr-cat__count">4 forms available</div>
+        </div>
+        <div class="hr-cat animate-on-scroll delay-1">
+          <div class="hr-cat__icon">🏅</div>
+          <div class="hr-cat__title">Retirement & Separation</div>
+          <div class="hr-cat__desc">Requirements and procedures for compulsory retirement, optional retirement, and resignation.</div>
+          <div class="hr-cat__count">5 forms available</div>
+        </div>
+        <div class="hr-cat animate-on-scroll delay-2">
+          <div class="hr-cat__icon">✅</div>
+          <div class="hr-cat__title">Clearances & Certifications</div>
+          <div class="hr-cat__desc">Request Service Records, Certificates of Employment, and Division Clearances online.</div>
+          <div class="hr-cat__count">4 forms available</div>
+        </div>
+        <div class="hr-cat animate-on-scroll delay-3">
+          <div class="hr-cat__icon">📊</div>
+          <div class="hr-cat__title">Performance & IPCRF</div>
+          <div class="hr-cat__desc">Download IPCRF templates, RPMS tools, and performance rating guidelines per track.</div>
+          <div class="hr-cat__count">7 forms available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Forms Library -->
+  <section class="forms-library">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title animate-on-scroll">Forms Library</h2>
+        <p class="section__subtitle animate-on-scroll delay-1">
+          All forms are the latest version as approved by DepEd Central Office. Filter by category below.
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar filter-bar--inline animate-on-scroll">
+        <div class="container" style="padding: var(--space-md) var(--space-lg);">
+          <button class="filter-btn filter-btn--active" data-filter="all">All Forms</button>
+          <button class="filter-btn" data-filter="leave">Leave & Attendance</button>
+          <button class="filter-btn" data-filter="appt">Appointments</button>
+          <button class="filter-btn" data-filter="reclass">Reclassification</button>
+          <button class="filter-btn" data-filter="retire">Retirement</button>
+          <button class="filter-btn" data-filter="clearance">Clearances</button>
+          <button class="filter-btn" data-filter="general">Performance</button>
+        </div>
+      </div>
+
+      <div class="forms-table-wrap animate-on-scroll delay-1">
+        <table class="resources-table" id="formsTable">
+          <thead>
+            <tr>
+              <th>Form Name</th>
+              <th>Form No.</th>
+              <th>Category</th>
+              <th>Last Updated</th>
+              <th style="text-align:center;">Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="form-row" data-category="general">
+              <td class="resource-name">Personal Data Sheet</td>
+              <td>CS Form No. 212 (Rev. 2017)</td>
+              <td><span class="form-badge form-badge--general">General</span></td>
+              <td>Jan 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="leave">
+              <td class="resource-name">Application for Leave</td>
+              <td>CS Form No. 6 (Rev. 2020)</td>
+              <td><span class="form-badge form-badge--leave">Leave</span></td>
+              <td>Mar 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="leave">
+              <td class="resource-name">Daily Time Record</td>
+              <td>CS Form No. 48</td>
+              <td><span class="form-badge form-badge--leave">Leave</span></td>
+              <td>Jan 2025</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="leave">
+              <td class="resource-name">Leave Ledger / Liquidation Form</td>
+              <td>HR-LEAVE-002</td>
+              <td><span class="form-badge form-badge--leave">Leave</span></td>
+              <td>Jan 2025</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="appt">
+              <td class="resource-name">Request for Personnel Action</td>
+              <td>CS Form No. 1</td>
+              <td><span class="form-badge form-badge--appt">Appointments</span></td>
+              <td>Feb 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="appt">
+              <td class="resource-name">Oath of Office</td>
+              <td>CS Form No. 32</td>
+              <td><span class="form-badge form-badge--appt">Appointments</span></td>
+              <td>Jan 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="appt">
+              <td class="resource-name">Assumption of Duty Form</td>
+              <td>DO-HR-003</td>
+              <td><span class="form-badge form-badge--appt">Appointments</span></td>
+              <td>Jan 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="reclass">
+              <td class="resource-name">Application for Reclassification</td>
+              <td>RECLASS-001</td>
+              <td><span class="form-badge form-badge--reclass">Reclassification</span></td>
+              <td>Jun 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="reclass">
+              <td class="resource-name">Checklist for Reclassification Documents</td>
+              <td>RECLASS-002</td>
+              <td><span class="form-badge form-badge--reclass">Reclassification</span></td>
+              <td>Jun 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="retire">
+              <td class="resource-name">Application for Retirement (GSIS)</td>
+              <td>GSIS-RA-001</td>
+              <td><span class="form-badge form-badge--retire">Retirement</span></td>
+              <td>Aug 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="retire">
+              <td class="resource-name">Resignation / Voluntary Separation Form</td>
+              <td>DO-HR-SEP-01</td>
+              <td><span class="form-badge form-badge--retire">Retirement</span></td>
+              <td>Jan 2025</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="clearance">
+              <td class="resource-name">Request for Certificate of Employment</td>
+              <td>COE-REQ-001</td>
+              <td><span class="form-badge form-badge--clearance">Clearance</span></td>
+              <td>Jan 2025</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="clearance">
+              <td class="resource-name">Division Clearance Request Form</td>
+              <td>CL-DIV-001</td>
+              <td><span class="form-badge form-badge--clearance">Clearance</span></td>
+              <td>Jan 2025</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="general">
+              <td class="resource-name">IPCRF — Teacher I–III</td>
+              <td>RPMS-IPCRF-T1</td>
+              <td><span class="form-badge form-badge--general">Performance</span></td>
+              <td>Sep 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="general">
+              <td class="resource-name">IPCRF — Master Teacher I–IV</td>
+              <td>RPMS-IPCRF-MT</td>
+              <td><span class="form-badge form-badge--general">Performance</span></td>
+              <td>Sep 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+            <tr class="form-row" data-category="general">
+              <td class="resource-name">IPCRF — School Head</td>
+              <td>RPMS-IPCRF-SH</td>
+              <td><span class="form-badge form-badge--general">Performance</span></td>
+              <td>Sep 2024</td>
+              <td style="text-align:center;"><a href="#" class="memo-item__download" aria-label="Download">⬇️</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- HR Contact -->
+  <section class="hr-contact section">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title animate-on-scroll">Contact Human Resources</h2>
+        <p class="section__subtitle animate-on-scroll delay-1">
+          For concerns about employment records, form submissions, or HR transactions, reach the HRMD through:
+        </p>
+      </div>
+      <div class="hr-contact__grid">
+        <div class="hr-contact-card animate-on-scroll delay-1">
+          <div class="hr-contact-card__icon">📞</div>
+          <div class="hr-contact-card__title">Call Us</div>
+          <div class="hr-contact-card__detail">(054) 871-5533 local 102<br />Monday – Friday, 8:00 AM – 5:00 PM</div>
+        </div>
+        <div class="hr-contact-card animate-on-scroll delay-2">
+          <div class="hr-contact-card__icon">✉️</div>
+          <div class="hr-contact-card__title">Email HRMD</div>
+          <div class="hr-contact-card__detail">hrmd.camsur@deped.gov.ph<br />Response within 2–3 working days</div>
+        </div>
+        <div class="hr-contact-card animate-on-scroll delay-3">
+          <div class="hr-contact-card__icon">📍</div>
+          <div class="hr-contact-card__title">Walk-In</div>
+          <div class="hr-contact-card__detail">HRMD Office, 2nd Floor, SDO Building<br />Freedom Sports Complex, Pili, CamSur</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{> footer}}
+
+  <script type="module" src="/src/main.js"></script>
+  <script>
+    // Forms table filter
+    const filterBtns = document.querySelectorAll('[data-filter]');
+    const formRows   = document.querySelectorAll('.form-row');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+        btn.classList.add('filter-btn--active');
+        const f = btn.dataset.filter;
+        formRows.forEach(row => {
+          row.dataset.hidden = (f !== 'all' && row.dataset.category !== f) ? 'true' : 'false';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

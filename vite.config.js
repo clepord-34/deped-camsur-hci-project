@@ -19,6 +19,8 @@ export default defineConfig({
         programs: resolve(__dirname, 'src/pages/programs.html'),
         services: resolve(__dirname, 'src/pages/services.html'),
         transparencySeal: resolve(__dirname, 'src/pages/transparency-seal.html'),
+        annualReports: resolve(__dirname, 'src/pages/annual-reports.html'),
+        biddingDocuments: resolve(__dirname, 'src/pages/bidding-documents.html'),
         about: resolve(__dirname, 'src/pages/about.html'),
       },
     },

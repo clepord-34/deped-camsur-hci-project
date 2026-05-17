@@ -1,44 +1,259 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-Services Portal — DepEd Camarines Sur</title>
-  <meta name="description" content="Online portal for division services and support." />
+  <title>E-Services Portal — DepEd Division of Camarines Sur</title>
+  <meta name="description" content="Access all official DepEd online systems and e-services for Camarines Sur educators and staff." />
   <link rel="icon" type="image/svg+xml" href="/deped-logo.png" />
   <link rel="stylesheet" href="/src/styles/main.css" />
-</head>
+  <style>
+    /* ---- E-Service Cards ---- */
+    .eservices { padding: var(--space-3xl) 0; background: var(--color-white); }
+    .eservices__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
 
+    .eservice-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      text-align: center;
+      transition: all var(--transition-base);
+      background: var(--color-white);
+    }
+    .eservice-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+
+    .eservice-card__icon {
+      width: 64px; height: 64px;
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--fs-2xl);
+      margin: 0 auto var(--space-md);
+    }
+    .eservice-card[data-accent="blue"]   .eservice-card__icon { background: rgba(27,58,92,0.08); }
+    .eservice-card[data-accent="gold"]   .eservice-card__icon { background: rgba(212,160,23,0.1); }
+    .eservice-card[data-accent="green"]  .eservice-card__icon { background: rgba(39,174,96,0.1); }
+    .eservice-card[data-accent="red"]    .eservice-card__icon { background: rgba(192,57,43,0.08); }
+    .eservice-card[data-accent="purple"] .eservice-card__icon { background: rgba(142,68,173,0.08); }
+
+    .eservice-card__name { font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--color-navy); margin-bottom: var(--space-xs); }
+    .eservice-card__desc { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-relaxed); margin-bottom: var(--space-lg); }
+
+    .eservice-card__status {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: var(--fs-xs); font-weight: var(--fw-semibold);
+      padding: 3px 10px; border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+    }
+    .eservice-card__status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .eservice-card__status--online      { background: rgba(39,174,96,0.1); color: var(--color-success); }
+    .eservice-card__status--seasonal    { background: rgba(243,156,18,0.1); color: var(--color-warning); }
+
+    .eservice-card__link {
+      display: inline-flex; align-items: center; gap: var(--space-sm);
+      font-size: var(--fs-sm); font-weight: var(--fw-semibold);
+      color: var(--color-navy-light);
+      padding: .5rem 1rem;
+      border: 1.5px solid var(--color-navy-light);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    .eservice-card__link:hover { background: var(--color-navy); color: var(--color-white); border-color: var(--color-navy); }
+
+    /* ---- Notice Banner ---- */
+    .eservices-notice {
+      background: rgba(212,160,23,0.08);
+      border: 1px solid rgba(212,160,23,0.3);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+      display: flex; align-items: flex-start; gap: var(--space-md);
+      margin-bottom: var(--space-2xl);
+    }
+    .eservices-notice__icon { font-size: var(--fs-xl); flex-shrink: 0; }
+    .eservices-notice__title { font-weight: var(--fw-semibold); color: #946E0A; font-size: var(--fs-sm); }
+    .eservices-notice__text  { font-size: var(--fs-sm); color: var(--color-text-secondary); margin-top: 2px; line-height: var(--lh-relaxed); }
+
+    /* ---- Getting Started Guide ---- */
+    .eservices-guide { background: var(--color-bg-alt); padding: var(--space-3xl) 0; }
+    .guide-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); counter-reset: step; }
+    .guide-step {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      text-align: center;
+      position: relative;
+    }
+    .guide-step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 36px; height: 36px;
+      background: var(--color-navy); color: var(--color-white);
+      font-weight: var(--fw-bold); font-size: var(--fs-sm);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto var(--space-md);
+    }
+    .guide-step__icon  { font-size: var(--fs-2xl); margin-bottom: var(--space-sm); }
+    .guide-step__title { font-size: var(--fs-base); font-weight: var(--fw-bold); color: var(--color-navy); margin-bottom: var(--space-xs); }
+    .guide-step__text  { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-relaxed); }
+    .guide-step__text a { color: var(--color-navy-light); font-weight: var(--fw-semibold); }
+
+    @media (max-width: 1024px) {
+      .eservices__grid { grid-template-columns: repeat(2, 1fr); }
+      .guide-steps     { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .eservices__grid { grid-template-columns: 1fr; }
+      .guide-steps     { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
 <body>
 
   {{> header}}
 
-
-  <!-- ===== PAGE HEADER ===== -->
-  <section class="page-header">
+  <div class="page-header">
     <div class="container">
+      <h1 class="page-header__title">📊 E-Services Portal</h1>
       <div class="page-header__breadcrumb">
-        <a href="/">Home</a> / <span>E-Services Portal</span>
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Services</span>
+        <span>›</span>
+        <span>E-Services Portal</span>
       </div>
-      <h1 class="page-header__title">E-Services Portal</h1>
-      <p class="page-header__subtitle">Online portal for division services and support.</p>
+    </div>
+  </div>
+
+  <!-- E-Services Grid -->
+  <section class="eservices">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title animate-on-scroll">Official Online Systems</h2>
+        <p class="section__subtitle animate-on-scroll delay-1">
+          Access all DepEd national and division-level e-services. Log in using your official DepEd credentials.
+        </p>
+      </div>
+
+      <div class="eservices-notice animate-on-scroll">
+        <div class="eservices-notice__icon">⚠️</div>
+        <div>
+          <div class="eservices-notice__title">Security Reminder</div>
+          <div class="eservices-notice__text">Always use your official DepEd-issued credentials. Never share your password. Report any unauthorized access immediately to the <a href="/src/pages/ict-helpdesk.html" style="color:var(--color-navy);font-weight:600;">ICT Unit</a>.</div>
+        </div>
+      </div>
+
+      <div class="eservices__grid">
+
+        <div class="eservice-card animate-on-scroll delay-1" data-accent="blue">
+          <div class="eservice-card__icon">👤</div>
+          <div class="eservice-card__name">HRIS</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">Human Resource Information System — manage your employee profile, leave records, and service history.</div>
+          <a href="https://hris.deped.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open System →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-2" data-accent="blue">
+          <div class="eservice-card__icon">🎓</div>
+          <div class="eservice-card__name">LIS</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">Learner Information System — enroll learners, manage class records, and submit required reports.</div>
+          <a href="https://lis.deped.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open System →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-3" data-accent="gold">
+          <div class="eservice-card__icon">💰</div>
+          <div class="eservice-card__name">iGo Payroll</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">View payslips, salary deductions, and payroll history through the DepEd payroll management system.</div>
+          <a href="https://igo.deped.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open System →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-1" data-accent="green">
+          <div class="eservice-card__icon">✉️</div>
+          <div class="eservice-card__name">DepEd Email</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">Official Google Workspace for all DepEd personnel — use firstname.lastname@deped.gov.ph to log in.</div>
+          <a href="https://mail.deped.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open Email →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-2" data-accent="blue">
+          <div class="eservice-card__icon">📚</div>
+          <div class="eservice-card__name">DepEd Commons</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">Access digital textbooks, LMS courses, and collaborative learning tools for educators and learners.</div>
+          <a href="https://commons.deped.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open Portal →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-3" data-accent="blue">
+          <div class="eservice-card__icon">🏫</div>
+          <div class="eservice-card__name">EBEIS</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">Enhanced Basic Education Information System — school-level statistical reporting and data submission.</div>
+          <a href="https://ebeis.deped.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open System →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-1" data-accent="purple">
+          <div class="eservice-card__icon">📖</div>
+          <div class="eservice-card__name">Phil-IRI Online</div>
+          <div class="eservice-card__status eservice-card__status--seasonal">Seasonal Access</div>
+          <div class="eservice-card__desc">Philippine Informal Reading Inventory — submit reading assessment data for learners per quarter.</div>
+          <a href="https://phil-iri.deped.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open System →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-2" data-accent="red">
+          <div class="eservice-card__icon">📝</div>
+          <div class="eservice-card__name">iSKOLar / ERDT</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">Scholarship and educational assistance portals for qualified DepEd personnel and learners.</div>
+          <a href="/src/pages/scholarship.html" class="eservice-card__link">View Scholarships →</a>
+        </div>
+
+        <div class="eservice-card animate-on-scroll delay-3" data-accent="gold">
+          <div class="eservice-card__icon">🔐</div>
+          <div class="eservice-card__name">PhilGEPS</div>
+          <div class="eservice-card__status eservice-card__status--online">Online</div>
+          <div class="eservice-card__desc">Philippine Government Electronic Procurement System — view DepEd CamSur bid notices and award summaries.</div>
+          <a href="https://www.philgeps.gov.ph" target="_blank" rel="noopener" class="eservice-card__link">Open Portal →</a>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- ===== PLACEHOLDER CONTENT ===== -->
-  <section class="section">
-    <div class="container container--wide">
-      <div
-        style="padding: 100px 20px; text-align: center; border: 2px dashed #DEE2E8; border-radius: 12px; background: #FFF; margin-bottom: 40px;">
-        <h2 style="color: #1A1A2E; margin-bottom: 12px; font-family: 'Outfit', sans-serif;">Coming Soon</h2>
-        <p style="color: #5A6478;">The E-Services Portal section is currently under development.</p>
+  <!-- Getting Started Guide -->
+  <section class="eservices-guide">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title animate-on-scroll">First Time Using These Systems?</h2>
+        <p class="section__subtitle animate-on-scroll delay-1">Follow these four steps to get started with any DepEd online system.</p>
+      </div>
+      <div class="guide-steps">
+        <div class="guide-step animate-on-scroll delay-1">
+          <div class="guide-step__icon">🪪</div>
+          <div class="guide-step__title">Verify Your Account</div>
+          <div class="guide-step__text">Ensure your employee ID and DepEd email are registered in the HRIS before accessing other systems.</div>
+        </div>
+        <div class="guide-step animate-on-scroll delay-2">
+          <div class="guide-step__icon">🔑</div>
+          <div class="guide-step__title">Get Your Credentials</div>
+          <div class="guide-step__text">Contact HR or the ICT Unit to receive your username and initial system password.</div>
+        </div>
+        <div class="guide-step animate-on-scroll delay-3">
+          <div class="guide-step__icon">🌐</div>
+          <div class="guide-step__title">Use an Updated Browser</div>
+          <div class="guide-step__text">Use Google Chrome or Mozilla Firefox with a stable internet connection. Avoid Internet Explorer.</div>
+        </div>
+        <div class="guide-step animate-on-scroll delay-4">
+          <div class="guide-step__icon">🎫</div>
+          <div class="guide-step__title">Need Help? File a Ticket</div>
+          <div class="guide-step__text">Visit the <a href="/src/pages/ict-helpdesk.html">ICT Helpdesk</a> to submit a support request or find quick fix guides.</div>
+        </div>
       </div>
     </div>
   </section>
+
   {{> footer}}
-
   <script type="module" src="/src/main.js"></script>
 </body>
-
 </html>
